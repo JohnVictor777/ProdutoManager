@@ -55,7 +55,7 @@ git clone https://github.com/JohnVictor777/ProdutoManager.git
 <!-- App.config -->
 <connectionStrings>
   <add name="bdprodutos" 
-       connectionString="server=localhost;user id=SEU_USUARIO;password=SUA_SENHA;database=bdprodutos"
+       connectionString="server=localhost;user id=SEU_USUARIO;password=SUA_SENHA;database=BDPRODUTOS"
        providerName="MySql.Data.MySqlClient"/>
 </connectionStrings>
 ```
