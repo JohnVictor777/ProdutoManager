@@ -32,6 +32,7 @@ Sistema desktop completo para gestão de produtos e fornecedores desenvolvido em
 ├── Banco de Dados: MySQL 8.0+
 ├── ORM: MySQL Connector/NET 9.2
 └── Arquitetura: Camadas (DAO, Model, View)
+└──Dependencies: MySql.Data
 ```
 
 ## ⚡ Configuração Rápida
