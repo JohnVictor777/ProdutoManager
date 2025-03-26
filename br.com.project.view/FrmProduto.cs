@@ -157,7 +157,7 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.view
 
                 // Atualiza o produto no banco de dados
                 ProdutoDAO dao = new ProdutoDAO();
-                dao.CadastrarProduto(obj);
+                dao.AtualizarProduto(obj);
 
                 // Atualiza a tabela e limpa os campos
                 CarregarProdutos();
