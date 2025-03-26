@@ -30,6 +30,7 @@
         {
             this.TabelaProduto = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.CbFornecedor = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.BtnAtualizar = new System.Windows.Forms.Button();
             this.BtnAdicionar = new System.Windows.Forms.Button();
             this.BtnNovo = new System.Windows.Forms.Button();
-            this.CbFornecedor = new System.Windows.Forms.ComboBox();
             this.TabelaProduto.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -85,6 +85,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastrar";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // CbFornecedor
+            // 
+            this.CbFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbFornecedor.FormattingEnabled = true;
+            this.CbFornecedor.Location = new System.Drawing.Point(144, 200);
+            this.CbFornecedor.Name = "CbFornecedor";
+            this.CbFornecedor.Size = new System.Drawing.Size(332, 32);
+            this.CbFornecedor.TabIndex = 28;
             // 
             // label13
             // 
@@ -214,7 +223,6 @@
             this.TxtPesquisa.Name = "TxtPesquisa";
             this.TxtPesquisa.Size = new System.Drawing.Size(471, 26);
             this.TxtPesquisa.TabIndex = 10;
-            
             this.TxtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPesquisa_KeyPress);
             // 
             // TabelaProdutos
@@ -288,15 +296,6 @@
             this.BtnNovo.Text = "Novo";
             this.BtnNovo.UseVisualStyleBackColor = false;
             this.BtnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
-            // 
-            // CbFornecedor
-            // 
-            this.CbFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbFornecedor.FormattingEnabled = true;
-            this.CbFornecedor.Location = new System.Drawing.Point(144, 200);
-            this.CbFornecedor.Name = "CbFornecedor";
-            this.CbFornecedor.Size = new System.Drawing.Size(332, 32);
-            this.CbFornecedor.TabIndex = 28;
             // 
             // FrmProduto
             // 

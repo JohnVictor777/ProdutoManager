@@ -148,11 +148,16 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.dao
                 DataTable tabelaproduto = new DataTable();
 
                 // Consulta SQL com filtro por nome (busca parcial)
-                string sql = @"select * from tb_produtos where descricao like @descricao";
+                string sql = @"select p.id as 'Código',
+	                             p.descricao as 'Descrição',
+                                 p.preco as 'Preço',
+                                 p.qtd_estoque as 'Qtd Estoque',
+                                 f.nome as 'Fornecedor' from tb_produtos as p
+                                 join tb_fornecedores as f on (p.for_id = f.id) where p.descricao like @nome";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@descricao", $"%{nome}%");
+                    cmd.Parameters.AddWithValue("@nome",nome);
                     conexao.Open();
 
                     using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
@@ -180,11 +185,11 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.dao
                 DataTable tabelaproduto = new DataTable();
 
                 // Consulta SQL com filtro por nome (busca exata)
-                string sql = @"select * from tb_produtos where descricao = @descricao";
+                string sql = @"select * from tb_fornecedores where descricao = @descricao";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@descricao", $"%{nome}%");
+                    cmd.Parameters.AddWithValue("@descricao", nome);
                     conexao.Open();
                     using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
                     {
@@ -197,44 +202,6 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.dao
             catch (Exception erro)
             {
                 MessageBox.Show($"Erro ao buscar o produto: {erro.Message}");
-                return null;
-            }
-        }
-        #endregion
-
-        #region Retorna produto por código
-        public Produto RetornaProdutoPorCodigo(int id)
-        {
-            try
-            {
-                // Consulta SQL com filtro por codigo (busca exata)
-                string sql = @"select * from tb_produtos where id = @id";
-
-                MySqlCommand cmd = new MySqlCommand(sql, conexao);
-
-                cmd.Parameters.AddWithValue("@id", id);
-                conexao.Open();
-                MySqlDataReader rs = cmd.ExecuteReader();
-
-                if (rs.Read())
-                {
-                    Produto p = new Produto();
-                    p.id = rs.GetInt32("id");
-                    p.descricao = rs.GetString("descricao");
-                    p.preco = rs.GetDecimal("preco");
-
-                    return p;
-                }
-                else
-                {
-                    MessageBox.Show($"Nenhum produto encontrado com esse código!");
-                    return null;
-                }
-
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show($"Ocorreu o erro: {erro.Message}");
                 return null;
             }
         }

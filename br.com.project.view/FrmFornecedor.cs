@@ -190,7 +190,7 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.view
 
             if (TabelaFornecedores.Rows.Count == 0)
             {
-                MessageBox.Show("Nenhum cliente encontrado!");
+                MessageBox.Show("Nenhum fornecedor encontrado!");
                 TabelaFornecedores.DataSource = dao.ListarFornecedorPorNome(nome);
             }
         }

@@ -24,33 +24,21 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.view
         {
             try
             {
-                // INICIALIZAÇÃO DO FORMULÁRIO //
 
                 // Define valor inicial padrão para o campo de preço (formato monetário)
                 TxtPreco.Text = 0m.ToString("N2");
 
-                // CARREGAMENTO DE FORNECEDORES //
-
                 // Cria instância do DAO para acesso aos dados de fornecedores
                 FornecedorDAO f_dao = new FornecedorDAO();
-
-                // Obtém lista de fornecedores do banco de dados
-                DataTable fornecedores = f_dao.ListarFornecedor();
 
                 // Configuração do ComboBox de fornecedores:
                 // - Verifica se existem dados válidos (não nulos e com colunas esperadas)
                 // - Define a fonte de dados, o campo a ser exibido e o valor associado
-                if (fornecedores != null && fornecedores.Rows.Count > 0 &&
-                    fornecedores.Columns.Contains("id") && fornecedores.Columns.Contains("nome"))
-                {
-                    CbFornecedor.DataSource = fornecedores;
+                
+                    CbFornecedor.DataSource = f_dao.ListarFornecedor(); ;
                     CbFornecedor.DisplayMember = "nome";
                     CbFornecedor.ValueMember = "id";
-                }
-                else
-                {
-                    MessageBox.Show("Nenhum fornecedor encontrado ou dados inválidos.");
-                }
+                
 
                 CarregarProdutos();
             }
@@ -213,7 +201,7 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.view
             if (TabelaProdutos.Rows.Count == 0)
             {
                 MessageBox.Show("Nenhum produto encontrado!");
-                CarregarProdutos();
+               TabelaProdutos.DataSource = dao.ListarProduto();
             }
         }
 
@@ -227,7 +215,8 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.view
                 TxtDescricao.Text = TabelaProdutos.CurrentRow.Cells[1].Value.ToString();
                 TxtPreco.Text = TabelaProdutos.CurrentRow.Cells[2].Value.ToString();
                 TxtQtd.Text = TabelaProdutos.CurrentRow.Cells[3].Value.ToString();
-
+                CbFornecedor.Text = TabelaProdutos.CurrentRow.Cells[4].Value.ToString();
+                
                 // Muda para a aba de cadastro/edição
                 TabelaProduto.SelectedTab = tabPage1;
             }
@@ -245,5 +234,6 @@ namespace Sistema_de_Cadastro_de_produtos.br.com.project.view
 
             TabelaProdutos.DataSource = dao.ListarProdutoPorNome(nome);
         }
+
     }
 }
